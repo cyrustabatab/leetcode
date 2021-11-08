@@ -9,19 +9,31 @@ def merge_sorted_array(nums1,m,nums2,n):
 
 
 
-    first = second = 0 
+
+    placement_index = m + n - 1
+    print(placement_index)
+
+
+    first,second = m - 1,n - 1
 
 
 
 
+    
 
+    
+    while placement_index >= 0:
+        print(first,second)
+        if second < 0 or ( first >=0 and nums1[first] >= nums2[second]):
 
-    while first != m + n:
+            nums1[placement_index] = nums1[first]
+            first -= 1
+        else:
+            nums1[placement_index] = nums2[second]
+            second -= 1
 
-        if nums1[first] > nums2[second]:
-            nums1[first],nums2[second] = nums2[second],nums1[first]
+        placement_index -= 1
 
-        first += 1
 
 
 
@@ -35,5 +47,5 @@ if __name__ == "__main__":
 
 
     print(nums1)
-    merge_sorted_array(nums1,6,nums2,3)
+    merge_sorted_array(nums1,3,nums2,3)
     print(nums1)
